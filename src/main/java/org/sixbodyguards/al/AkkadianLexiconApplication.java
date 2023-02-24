@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AkkadianLexiconApplication {
     public static void main(String[] args) {
+        // alma
         SpringApplication.run(AkkadianLexiconApplication.class, args);
     }
 
