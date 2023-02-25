@@ -71,7 +71,6 @@ jobs:
                     cache: maven
                     
             -   name: Build
-
                 run: mvn clean compile --file pom.xml
 #           Manual build end
 
