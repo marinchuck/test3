@@ -1,13 +1,13 @@
 name: CI pipeline
 
 on:
-
-    push:
-       branches: [ "main", "dev*" ]
-# in case of CodeQL the branches below must be a subset of the branches above
-    pull_request:
-        types: [opened, synchronize, reopened]
-        branches: [ "dev*" ]
+#
+#    push:
+#       branches: [ "main", "dev*" ]
+## in case of CodeQL the branches below must be a subset of the branches above
+#    pull_request:
+#        types: [opened, synchronize, reopened]
+#        branches: [ "dev*" ]
 
     workflow_dispatch:
 
@@ -26,7 +26,7 @@ jobs:
                     fetch-depth: 0
 
             -   name: Lint (java)
-                uses: github/super-linter@v4
+                uses: github/super-linter/slim@v4
                 env:
                     VALIDATE_ALL_CODEBASE: false
                     VALIDATE_GOOGLE_JAVA_FORMAT: true
