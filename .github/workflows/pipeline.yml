@@ -3,12 +3,14 @@ name: CI/CD pipeline
 on:
     push:
         branches: [ "main" ]
+#         pull requestnel a developert kell majd beloni
     pull_request:
         branches: [ "main" ]
 
 jobs:
     format:
-        name: Format the codebase
+        name: Format and Lint
+        
         runs-on: ubuntu-latest
 
         steps:
@@ -24,21 +26,16 @@ jobs:
                     java-version: '17'
                     distribution: 'temurin'
                     cache: maven
-            -   name: Process-resources
-                run: mvn -B package --file pom.xml
-    lint:
-        name: Lint codebase
-        runs-on: ubuntu-latest
+            -   name: Format (java)
+                run: mvn process-resources --file pom.xml
 
-        steps:
-            -   name: Lint Java
+            -   name: Lint (java)
                 uses: github/super-linter@v4
                 env:
                     VALIDATE_ALL_CODEBASE: false
                     VALIDATE_GOOGLE_JAVA_FORMAT: true
                     DEFAULT_BRANCH: main
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     build:
         name: Build the artifact
 
@@ -46,6 +43,6 @@ jobs:
 
         steps:
             -   name: Maven package
-                run: mvn -B package --file pom.xml
+                run: mvn package --file pom.xml
 
 
