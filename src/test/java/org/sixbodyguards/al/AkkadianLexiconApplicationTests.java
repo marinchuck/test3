@@ -10,16 +10,7 @@ class AkkadianLexiconApplicationTests {
   void contextLoads() {}
 
     @Test
-    void test1() {}
+    void test12() {}
 
-    @Test
-    void test2() {}
-
-    @Test
-    void test3() {}
-
-
-    @Test
-    void test4() {}
 
 }
