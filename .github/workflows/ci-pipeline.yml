@@ -2,11 +2,10 @@ name: CI pipeline
 
 on:
 #     push:
-#         branches: [ "main" ]
-# #         pull requestnel a developert kell majd beloni
+#        branches: [ "main", "dev" ]
 #     pull_request:
-#         branches: [ "main" ]
-# #    Allows you to run this workflow manually from the actions tab
+#        # The branches below must be a subset of the branches above
+#        branches: [ "dev" ]
     workflow_dispatch:
 
 jobs:
