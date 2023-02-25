@@ -9,4 +9,7 @@ class AkkadianLexiconApplicationTests {
   @Test
   void contextLoads() {}
 
+    @Test
+    void anotherTest() {}
+
 }
