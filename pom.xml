@@ -75,8 +75,7 @@
                         <goals>
                             <goal>sort</goal>
                         </goals>
-<!--                   we gonna run this goal on the CI server before building the project-->
-                        <phase>none</phase>
+                        <phase>process-resources</phase>
                     </execution>
                 </executions>
             </plugin>
@@ -96,8 +95,7 @@
 <!--                        This goal formats the code-->
                             <goal>format</goal>
                         </goals>
-<!--                        we gonna run this goal on the CI server before building the project-->
-                        <phase>none</phase>
+                        <phase>process-resources</phase>
                     </execution>
                 </executions>
             </plugin>
