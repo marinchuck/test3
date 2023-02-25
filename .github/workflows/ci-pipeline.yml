@@ -1,11 +1,20 @@
 name: CI pipeline
 
+# 1. format
+# 2. lint
+# 3. dependency review
+# 4. sonar
+# 6. gitguardian
+# 5. codeql
+
+
 on:
 #     push:
 #        branches: [ "main", "dev" ]
 #     pull_request:
-#        # The branches below must be a subset of the branches above
-#        branches: [ "dev" ]
+#         types: [opened, synchronize, reopened]
+#         branches: [ "dev" ]
+
     workflow_dispatch:
 
 jobs:
@@ -30,7 +39,10 @@ jobs:
                     cache: maven
                     
             -   name: Format (java)
-                run: mvn process-resources --file pom.xml
+#                 run: mvn process-resources --file pom.xml
+                run: |
+                    mvn impsort:sort
+                    mvn formatter:format
 
             -   name: Lint (java)
                 uses: github/super-linter@v4
@@ -39,6 +51,36 @@ jobs:
                     VALIDATE_GOOGLE_JAVA_FORMAT: true
                     DEFAULT_BRANCH: main
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    
+    check_vulnerability:
+        name: Check vulnerability
+        
+        runs-on: ubuntu-latest
+        
+        permissions:
+            actions: read
+            contents: read
+            security-events: write
+
+        strategy:
+            fail-fast: false
+            matrix:
+                language: [ 'java' ]
+        
+        steps:
+            -   name: Checkout branch
+                uses: actions/checkout@v3
+                with:
+                    # Full git history is needed to get a proper
+                    # list of changed files within `super-linter`
+                    fetch-depth: 0
+       
+            -   name: Dependency review
+                uses: actions/dependency-review-action@v2
+                with:
+                    base-ref: main
+                    head-ref: main
+          
     build:
         name: Build
         
