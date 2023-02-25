@@ -10,11 +10,11 @@ name: Lint Code Base
 # Start the job on all push #
 #############################
 on:
-#    push:
-#        branches-ignore: [master, main]
-#        # Remove the line above to run when pushing to master
-#    pull_request:
-#        branches: [master, main]
+    #    push:
+    #        branches-ignore: [master, main]
+    #        # Remove the line above to run when pushing to master
+    #    pull_request:
+    #        branches: [master, main]
     push:
 
 ###############
@@ -34,20 +34,20 @@ jobs:
             ##########################
             # Checkout the code base #
             ##########################
-            - name: Checkout Code
-              uses: actions/checkout@v3
-              with:
-                  # Full git history is needed to get a proper
-                  # list of changed files within `super-linter`
-                  fetch-depth: 0
+            -   name: Checkout Code
+                uses: actions/checkout@v3
+                with:
+                    # Full git history is needed to get a proper
+                    # list of changed files within `super-linter`
+                    fetch-depth: 0
 
             ################################
             # Run Linter against code base #
             ################################
-            - name: Lint Code Base
-              uses: github/super-linter/slim@v4
-              env:
-                  VALIDATE_ALL_CODEBASE: false
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            -   name: Lint Code Base
+                uses: github/super-linter/slim@v4
+                env:
+                    VALIDATE_ALL_CODEBASE: false
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #                  VALIDATE_GOOGLE_JAVA_FORMAT: true
 #                  JAVA_FILE_NAME: eclipse-java-google-style-modified-v1.xml
