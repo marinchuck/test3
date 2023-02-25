@@ -65,16 +65,18 @@
                 <configuration>
                     <groups>java.,javax.,org.,com.</groups>
                     <staticGroups>java,*</staticGroups>
-                    <excludes>
-                        <exclude>**/thrift/*.java</exclude>
-                    </excludes>
+<!--                    remove unused imports-->
+                    <removeUnused>true</removeUnused>
+<!--                    mvn process-resources -Dimpsort.skip=true-->
                 </configuration>
                 <executions>
                     <execution>
                         <id>sort-imports</id>
                         <goals>
-                            <goal>sort</goal><!-- runs at process-sources phase by default -->
+                            <goal>sort</goal>
                         </goals>
+<!--                   we gonna run this goal on the CI server before building the project-->
+                        <phase>none</phase>
                     </execution>
                 </executions>
             </plugin>
@@ -91,10 +93,11 @@
                     <execution>
                         <id>format</id>
                         <goals>
-<!--                            This goal formats the code-->
+<!--                        This goal formats the code-->
                             <goal>format</goal>
                         </goals>
-                        <phase>process-resources</phase>
+<!--                        we gonna run this goal on the CI server before building the project-->
+                        <phase>none</phase>
                     </execution>
                 </executions>
             </plugin>
