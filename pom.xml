@@ -17,7 +17,7 @@
     <packaging>jar</packaging>
     <properties>
         <java.version>17</java.version>
-        <sonar.organization>marinchuck</sonar.organization>
+        <sonar.organization>marinchuck-1</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
