@@ -1,13 +1,7 @@
 name: CI pipeline
 
-# 1. format +
-# 2. lint +
-# 3. dependency review +
-# 4. sonar
-# 5. codeql +
-
-
 on:
+
 #     push:
 #        branches: [ "main", "dev" ]
 # in case of CodeQL the branches below must be a subset of the branches above
