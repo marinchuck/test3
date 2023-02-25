@@ -6,17 +6,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class AkkadianLexiconApplicationTests {
 
-  @Test
-  void contextLoads() {}
+    @Test
+    void contextLoads() {
+    }
 
     @Test
-    void test12() {}
+    void test12() {
+    }
 
     @Test
-    void    test124 () {
+    void test124() {
 
-
-                }
-
+    }
 
 }
