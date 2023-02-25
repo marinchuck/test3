@@ -6,22 +6,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class AkkadianLexiconApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+  @Test
+  void contextLoads() {
+  }
 
-    @Test
-    void test12() {
-    }
 
-    @Test
-    void test152() {
-    }
+  @Test
+  void test12() {
+  }
 
-    @Test
-    void test153() {
-        for (; ; ) {
-            break;
-        }
+  @Test
+  void test152() {
+  }
+
+  @Test
+  void test153() {
+
+    for (; ; ) {
+      break;
     }
+  }
 }
