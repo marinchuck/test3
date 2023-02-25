@@ -69,7 +69,8 @@ jobs:
                     cache: maven
                     
             -   name: Build
-                run: mvn clean package --file pom.xml
+#                 run: mvn clean package --file pom.xml
+                run: mvn clean compile --file pom.xml
 #           Manual build end
 
             # ℹ️ Command-line programs to run using the OS shell.
