@@ -41,7 +41,7 @@ jobs:
                     DEFAULT_BRANCH: main
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     build:
-        name: Build the artifact
+        name: Build
         
         runs-on: ubuntu-latest
         
