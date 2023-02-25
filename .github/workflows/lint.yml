@@ -49,5 +49,5 @@ jobs:
               env:
                   VALIDATE_ALL_CODEBASE: false
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  VALIDATE_GOOGLE_JAVA_FORMAT: true
+#                  VALIDATE_GOOGLE_JAVA_FORMAT: true
 #                  JAVA_FILE_NAME: eclipse-java-google-style-modified-v1.xml
