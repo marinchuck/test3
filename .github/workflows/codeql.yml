@@ -1,30 +1,32 @@
-# For most projects, this workflow file will not need changing; you simply need
-# to commit it to your repository.
-#
-# You may wish to alter this file to override the set of languages analyzed,
-# or to provide custom queries or build logic.
-#
-# ******** NOTE ********
-# We have attempted to detect the languages in your repository. Please check
-# the `language` matrix defined below to confirm you have the correct set of
-# supported CodeQL languages.
-#
 name: "CodeQL scan"
 
 on:
-#    push:
-#        branches: [ "main" ]
-#    pull_request:
-#        # The branches below must be a subset of the branches above
-#        branches: [ "main" ]
-#    schedule:
-#        - cron: '39 20 * * 0'
+    schedule:
+    # * is a special character in YAML so you have to quote this string
+    # https://crontab.guru/
+        - cron:  '00 12 * * *'
+        
     workflow_dispatch:
 
 jobs:
+
+    create-matrix:
+        name: Check repository for languages
+        runs-on: ubuntu-latest
+        outputs:
+            matrix: ${{ steps.set-matrix.outputs.languages }}
+        steps:
+         -  name: Get languages from repo
+            id: set-matrix
+            uses: advanced-security/set-codeql-language-matrix@v1
+            with:
+                access-token: ${{ secrets.GITHUB_TOKEN }}
+                endpoint: ${{ github.event.repository.languages_url }}
     analyze:
         name: Analyze
         runs-on: ubuntu-latest
+        needs: create-matrix
+        if: ${{ needs.create-matrix.outputs.matrix != '[]' }}
         permissions:
             actions: read
             contents: read
@@ -33,7 +35,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                language: [ 'java' ]
+                language: ${{ fromJSON(needs.create-matrix.outputs.matrix) }}
                 # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
                 # Use only 'java' to analyze code written in Java, Kotlin or both
                 # Use only 'javascript' to analyze code written in JavaScript, TypeScript or both
@@ -69,19 +71,9 @@ jobs:
                     cache: maven
                     
             -   name: Build
-#                 run: mvn clean package --file pom.xml
+
                 run: mvn clean compile --file pom.xml
 #           Manual build end
-
-            # ℹ️ Command-line programs to run using the OS shell.
-            # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
-
-            #   If the Autobuild fails above, remove it and uncomment the following three lines.
-            #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
-
-            # - run: |
-            #     echo "Run, Build Application using script"
-            #     ./location_of_script_within_repo/buildscript.sh
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v2
