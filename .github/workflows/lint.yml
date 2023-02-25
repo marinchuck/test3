@@ -48,6 +48,7 @@ jobs:
               uses: github/super-linter/slim@v4
               env:
                   VALIDATE_ALL_CODEBASE: false
-                  DEFAULT_BRANCH: master
+                  DEFAULT_BRANCH: maian
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  VALIDATE_JAVA: true
                   JAVA_FILE_NAME: eclipse-java-google-style-modified-v1.xml
