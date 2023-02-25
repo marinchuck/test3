@@ -11,16 +11,13 @@ class AkkadianLexiconApplicationTests {
     }
 
     @Test
-    void test12() {
-    }
+      void     test12 (  )   {
 
-    @Test
-    void test124() {
 
-    }
-    void test125() {
 
-    }
+        }
+
+
 
 
 }
