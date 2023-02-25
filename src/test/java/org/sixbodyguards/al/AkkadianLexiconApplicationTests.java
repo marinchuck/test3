@@ -15,4 +15,7 @@ class AkkadianLexiconApplicationTests {
     @Test
     void test2() {}
 
+    @Test
+    void test3() {}
+
 }
