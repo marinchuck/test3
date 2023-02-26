@@ -10,24 +10,8 @@ class AkkadianLexiconApplicationTests {
   void contextLoads() {}
 
   @Test
-  void test12() {}
+  void test1  () {
 
-  @Test
-  void test152() {}
-
-  @Test
-  void test153() {
-
-    for (; ; ) {
-      break;
-    }
   }
 
-  @Test
-  void test163() {
-
-    for (; ; ) {
-      break;
-    }
-  }
 }
