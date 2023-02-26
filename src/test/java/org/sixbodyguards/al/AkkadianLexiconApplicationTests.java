@@ -24,12 +24,10 @@ class AkkadianLexiconApplicationTests {
   }
 
   @Test
-    void         test163           () {
+  void test163() {
 
-    for       (; ;       ) {
+    for (; ; ) {
       break;
-
-
-           }
+    }
   }
 }
