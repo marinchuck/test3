@@ -8,5 +8,4 @@ class AkkadianLexiconApplicationTests {
 
   @Test
   void contextLoads() {}
-
 }
