@@ -8,6 +8,7 @@ public class AkkadianLexiconApplication {
 
   public static void main(String[] args) {
 //f4
+//    f42
     SpringApplication.run(AkkadianLexiconApplication.class, args);
   }
 }
