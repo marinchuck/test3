@@ -10,7 +10,7 @@ on:
 
 jobs:
     lint:
-        name: Lint Code Base
+        name: Lint codebase
         runs-on: ubuntu-latest
 
         steps:
