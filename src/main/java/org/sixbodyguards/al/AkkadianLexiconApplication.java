@@ -7,8 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AkkadianLexiconApplication {
 
   public static void main(String[] args) {
-//f4
-//    f42
+    // f4
+    // ER
+    //    f42
     SpringApplication.run(AkkadianLexiconApplication.class, args);
   }
 }
