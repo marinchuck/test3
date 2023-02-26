@@ -8,6 +8,7 @@ public class AkkadianLexiconApplication {
 
   public static void main(String[] args) {
     //dev7
+    //created feature/f2
     SpringApplication.run(AkkadianLexiconApplication.class, args);
   }
 }
