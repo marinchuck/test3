@@ -8,10 +8,4 @@ class AkkadianLexiconApplicationTests {
 
   @Test
   void contextLoads() {}
-
-  @Test
-  void test1() {}
-
-  @Test
-  void test2() {}
 }
