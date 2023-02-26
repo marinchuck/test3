@@ -22,4 +22,14 @@ class AkkadianLexiconApplicationTests {
       break;
     }
   }
+
+  @Test
+    void         test163           () {
+
+    for       (; ;       ) {
+      break;
+
+
+           }
+  }
 }
