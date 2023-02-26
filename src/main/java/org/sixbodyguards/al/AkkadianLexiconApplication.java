@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AkkadianLexiconApplication {
 
   public static void main(String[] args) {
-    // dev7
-    // created feature/f2
+//f3
     SpringApplication.run(AkkadianLexiconApplication.class, args);
   }
 }
