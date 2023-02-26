@@ -10,6 +10,7 @@ public class AkkadianLexiconApplication {
     // f4
     // ER
     //    f42
+//    ISS30
     SpringApplication.run(AkkadianLexiconApplication.class, args);
   }
 }
