@@ -5,33 +5,40 @@ on:
 #    push:
 #       branches: [ "main", "dev*" ]
 ## in case of CodeQL the branches below must be a subset of the branches above
-#    pull_request:
-#        types: [opened, synchronize, reopened]
-#        branches: [ "dev*" ]
+    pull_request:
+        types: [opened, synchronize, reopened]
+        branches: [ "main", "dev*" ]
 
     workflow_dispatch:
 
 jobs:
     lint:
-        name: Lint
-        
+        name: Lint Code Base
         runs-on: ubuntu-latest
-        
+
         steps:
-            -   name: Checkout branch
+
+            -   name: Checkout Code
                 uses: actions/checkout@v3
                 with:
                     # Full git history is needed to get a proper
                     # list of changed files within `super-linter`
                     fetch-depth: 0
+            # super-linter is buggy on Java code, thats why we lint Java separately
+            -   name: Lint Java
+                uses: axel-op/googlejavaformat-action@v3
+                with:
+                    skip-commit: true
+            -   name: Print diffs
+                run: git --no-pager diff --exit-code
 
-            -   name: Lint (java)
+            -   name: Lint other (.yml)
                 uses: github/super-linter/slim@v4
                 env:
-                    VALIDATE_ALL_CODEBASE: false
-                    VALIDATE_GOOGLE_JAVA_FORMAT: true
-                    DEFAULT_BRANCH: main
+                    VALIDATE_ALL_CODEBASE: true
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                    VALIDATE_GOOGLE_JAVA_FORMAT: true
+                    VALIDATE_YAML: true
                     
     create-matrix:
         name: Check repository for languages
